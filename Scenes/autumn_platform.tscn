@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bqm6ef6pi8gwt"]
+
+[ext_resource type="Texture2D" uid="uid://bo2mvnxxft40t" path="res://Assets/sprites/platforms.png" id="1_nvph1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v7ihv"]
+size = Vector2(32, 8)
+
+[node name="Autumn platform" type="AnimatableBody2D" unique_id=616612526]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740722252]
+texture = ExtResource("1_nvph1")
+region_enabled = true
+region_rect = Rect2(16, 32, 32, 9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1947331685]
+shape = SubResource("RectangleShape2D_v7ihv")
+one_way_collision = true

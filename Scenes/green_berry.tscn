@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://jswt66c3shk2"]
+
+[ext_resource type="Script" uid="uid://dqtlvle3a56d2" path="res://green_berry.gd" id="1_fo8sp"]
+[ext_resource type="Texture2D" uid="uid://b6kyd2q883d8y" path="res://Assets/sprites/fruit.png" id="2_q3a6w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22vlk"]
+radius = 8.0
+
+[node name="Green Berry" type="Area2D" unique_id=1850008968]
+collision_mask = 2
+script = ExtResource("1_fo8sp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2120192201]
+shape = SubResource("CircleShape2D_22vlk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1779106977]
+texture = ExtResource("2_q3a6w")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="inactive timer" type="Timer" parent="." unique_id=1229102036]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

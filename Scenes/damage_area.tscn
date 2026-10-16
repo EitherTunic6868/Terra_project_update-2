@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bqs1mhpismhws"]
+
+[ext_resource type="Script" uid="uid://cssfumknj6p4d" path="res://Scripts/damage_area.gd" id="1_tuwn5"]
+
+[node name="Damage Area" type="Area2D" unique_id=541749351]
+script = ExtResource("1_tuwn5")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

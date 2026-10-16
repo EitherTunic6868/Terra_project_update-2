@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ff2km0jkrrpf"]
+
+[ext_resource type="Script" uid="uid://b8ga5dh3bwwgq" path="res://Scripts/slime.gd" id="1_aiwxb"]
+[ext_resource type="Texture2D" uid="uid://d1tc5btqmt4i" path="res://Assets/sprites/slime_green.png" id="1_swwnm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paq7w"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4si1"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5gljc"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vblni"]
+atlas = ExtResource("1_swwnm")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22vlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paq7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4si1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5gljc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vblni")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22vlk"]
+size = Vector2(10, 13)
+
+[node name="Slime" type="Node2D" unique_id=514629404]
+script = ExtResource("1_aiwxb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=721985479]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_22vlk")
+autoplay = "default"
+frame = 3
+frame_progress = 0.66598195
+
+[node name="RayCastRight" type="RayCast2D" parent="." unique_id=623206456]
+position = Vector2(0, -7)
+target_position = Vector2(7, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="." unique_id=1854969204]
+position = Vector2(0, -7)
+target_position = Vector2(-7, 0)
+
+[node name="Damage Detection" type="Area2D" parent="." unique_id=1917321583]
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage Detection" unique_id=706903614]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_22vlk")
+
+[connection signal="body_entered" from="Damage Detection" to="." method="_on_damage_detection_body_entered"]
